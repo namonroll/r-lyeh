@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>運算思維期末遊戲</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- 🔸 開始畫面 -->
+  <div id="start-screen">
+    <video autoplay muted loop playsinline id="bg-video">
+    <source src="cover.mp4" type="video/mp4" min-width="800px">
+    </video>
+    <p>請操作模擬鍵盤，找到隱藏網站Deep R'lyeh</p>
+    <button id="start-btn" style="background-color: rgb(10, 119, 72); color: rgb(111, 247, 116);">into  R'lyeh</button>
+  </div>
+
+  <!-- 🔹 遊戲畫面：一開始隱藏 -->
+  <div id="game-screen" style="display: none;">
+
+    <!-- 模擬視窗 -->
+    <div class="browser-window">
+      <div class="tab-bar" id="tab-bar">
+        <div class="tab" data-tab="main" onclick="switchTab('main')">
+          <img src="https://www.google.com/s2/favicons?sz=16&domain=example.com" class="favicon">
+          <span>find your lord</span>
+          <span class="close-tab" onclick="handleTabClose('main'); event.stopPropagation();">✕</span>
+        </div>
+      </div>
+      <div class="address-bar">
+        <span class="lock-icon">🔒</span>
+        <input 
+          type="text" 
+          id="address-input" 
+          placeholder="輸入網址..."
+          onclick="setFocusedInput(this)"
+        >
+        <button class="refresh" onclick="handleAddressEnter()">search</button>
+      </div>
+      <div class="webpage-content" id="webpage-content">
+
+        <p>Ph'nglui mglw'nafh Cthulhu R'lyeh wgah'nagl <span class="ftwelve">F12</span>htagn</p>
+
+      </div>
+    </div>
+
+
+<!-- 模擬鍵盤（像實體鍵盤排列） -->
+  <div class="keyboard">
+
+    <!-- F1 ~ F12 -->
+  <div class="row">
+    <div class="key special" onclick="pressKey('Esc')">Esc</div>
+    <div class="key special" onclick="pressKey('F1')">F1</div>
+    <div class="key special" onclick="pressKey('F2')">F2</div>
+    <div class="key special" onclick="pressKey('F3')">F3</div>
+    <div class="key special" onclick="pressKey('F4')">F4</div>
+    <div class="key special" onclick="pressKey('F5')">F5</div>
+    <div class="key special" onclick="pressKey('F6')">F6</div>
+    <div class="key special" onclick="pressKey('F7')">F7</div>
+    <div class="key special" onclick="pressKey('F8')">F8</div>
+    <div class="key special" onclick="pressKey('F9')">F9</div>
+    <div class="key special" onclick="pressKey('F10')">F10</div>
+    <div class="key special" onclick="pressKey('F11')">F11</div>
+    <div class="key special" onclick="pressKey('F12')">F12</div>
+</div>
+
+
+    <!-- 數字列 -->
+    <div class="row">
+      <div class="key special" onclick="pressKey('Backspace')">⌫</div>
+      <div class="key" onclick="pressKey('1')">1</div>
+      <div class="key" onclick="pressKey('2')">2</div>
+      <div class="key" onclick="pressKey('3')">3</div>
+      <div class="key" onclick="pressKey('4')">4</div>
+      <div class="key" onclick="pressKey('5')">5</div>
+      <div class="key" onclick="pressKey('6')">6</div>
+      <div class="key" onclick="pressKey('7')">7</div>
+      <div class="key" onclick="pressKey('8')">8</div>
+      <div class="key" onclick="pressKey('9')">9</div>
+      <div class="key" onclick="pressKey('0')">0</div>
+      <div class="key" onclick="pressKey('-')">-</div>
+      <div class="key" onclick="pressKey('=')">=</div>
+    </div>
+
+    <!-- 第一排 QWERTY -->
+    <div class="row">
+      <div class="key special" onclick="pressKey('Tab')">Tab</div>
+      <div class="key" onclick="pressKey('Q')">Q</div>
+      <div class="key" onclick="pressKey('W')">W</div>
+      <div class="key" onclick="pressKey('E')">E</div>
+      <div class="key" onclick="pressKey('R')">R</div>
+      <div class="key" onclick="pressKey('T')">T</div>
+      <div class="key" onclick="pressKey('Y')">Y</div>
+      <div class="key" onclick="pressKey('U')">U</div>
+      <div class="key" onclick="pressKey('I')">I</div>
+      <div class="key" onclick="pressKey('O')">O</div>
+      <div class="key" onclick="pressKey('P')">P</div>
+      <div class="key" onclick="pressKey('[')">[</div>
+      <div class="key" onclick="pressKey(']')">]</div>
+      <div class="key" onclick="pressKey('\\')">\\</div>
+    </div>
+
+    <!-- 第二排 -->
+    <div class="row">
+      <div class="key special" onclick="pressKey('CapsLock')">Caps</div>
+      <div class="key" onclick="pressKey('A')">A</div>
+      <div class="key" onclick="pressKey('S')">S</div>
+      <div class="key" onclick="pressKey('D')">D</div>
+      <div class="key" onclick="pressKey('F')">F</div>
+      <div class="key" onclick="pressKey('G')">G</div>
+      <div class="key" onclick="pressKey('H')">H</div>
+      <div class="key" onclick="pressKey('J')">J</div>
+      <div class="key" onclick="pressKey('K')">K</div>
+      <div class="key" onclick="pressKey('L')">L</div>
+      <div class="key" onclick="pressKey(';')">;</div>
+      <div class="key" onclick="pressKey('\'')">'</div>
+      <div class="key special" onclick="pressKey('Enter')">Enter</div>
+    </div>
+
+    <!-- 第三排 -->
+    <div class="row">
+      <div class="key special" onclick="pressKey('Shift')">Shift</div>
+      <div class="key" onclick="pressKey('Z')">Z</div>
+      <div class="key" onclick="pressKey('X')">X</div>
+      <div class="key" onclick="pressKey('C')">C</div>
+      <div class="key" onclick="pressKey('V')">V</div>
+      <div class="key" onclick="pressKey('B')">B</div>
+      <div class="key" onclick="pressKey('N')">N</div>
+      <div class="key" onclick="pressKey('M')">M</div>
+      <div class="key" onclick="pressKey(',')">,</div>
+      <div class="key" onclick="pressKey('.')">.</div>
+      <div class="key" onclick="pressKey('/')">/</div>
+      <div class="key special" onclick="pressKey('Shift')">Shift</div>
+    </div>
+
+  <!-- 控制列 -->
+  <div class="row">
+    <div class="key special" onclick="pressKey('Ctrl')">Ctrl</div>
+    <div class="key special" onclick="pressKey('Alt')">Alt</div>
+    <div class="key spacebar" onclick="pressKey(' ')">Space</div>
+    <div class="key special" onclick="pressKey('Alt')">Alt</div>
+    <div class="key special" onclick="pressKey('Ctrl')">Ctrl</div>
+  </div>
+  </div>
+
+  <!-- 模擬DevTools -->
+  <div id="devtools" class="devtools hidden">
+  <div class="devtools-header">
+    <span>DevTools</span>
+    <button id="close-devtools">✕</button>
+  </div>
+  <div class="devtools-tabs">
+    <button id="tab-element">element</button>
+    <button id="tab-console">console</button>
+  </div>
+  <div id="devtools-content" class="devtools-content">
+    <!-- 預設載入 element -->
+ <pre id="element-content" class="visible">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="zh-Hant"&gt;
+&lt;head&gt;
+  &lt;title&gt;find me in virtualand&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;p&gt;mini web&lt;/p&gt;
+  
+  <button onclick="removeComment()" class="comment-delete">✕</button>
+  &lt;<span id="open-comment">&excl;--</span>
+  &lt;img src="隱藏圖片.jpg"&gt;
+  <span id="close-comment">--&gt;</span>
+  <button onclick="removeComment()" class="comment-delete">✕</button>
+  
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+
+    <div id="console-content" class="hidden">hide in history<br><br>after seeing the truth,<br>you can replace anger with what you found</div>
+  </div>
+</div>
+
+<div id="wrong-hint-window" class="browser-window small hidden">
+  <div class="window-header">
+    <span>Find All I</span>
+    <button onclick="closeWrongHint()">✕</button>
+  </div>
+  <div class="webpage-content" style="height: 300px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+    <img src="pic-f.png" alt="錯誤提示" style="width:100%; max-height:300px; object-fit:contain;">
+  </div>
+</div>
+
+<div id="true-hint-window" class="browser-window small hidden">
+  <div class="window-header">
+    <span>Find all I</span>
+    <button onclick="closeTrueHint()">✕</button>
+  </div>
+  <div class="webpage-content" style="height: 300px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+    <img src="pic-t.png" alt="正確提示" style="width:100%; max-height:300px; object-fit:contain;">
+  </div>
+</div>
+
+<div id="search-bar" class="search-bar hidden">
+  <input type="text" id="search-input" placeholder="搜尋關鍵字...">
+  <button onclick="submitSearch()">查詢</button>
+  <button class="close-search" onclick="hideSearchBar()">✕</button>
+</div>
+<div id="final-hint-window" class="browser-window small hidden">
+  <div class="window-header">
+    <span>Find all I</span>
+    <button onclick="closeFinalHint()">✕</button>
+  </div>
+  <div class="webpage-content" style="height: 300px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+    <img src="pic-s.png" alt="最後提示" style="width:100%; max-height:300px; object-fit:contain;">
+    <p style="color: rgb(255, 221, 71);">you found the truth</p>
+  </div>
+</div>
+<!-- 💬 提示內容 -->
+<!-- 左下角提示與攻略按鈕 -->
+<div class="helper-buttons">
+  <button onclick="toggleHintWindow()">查看提示</button>
+  <button onclick="toggleGuideWindow()">查看攻略</button>
+</div>
+
+<!-- 提示視窗 -->
+<div id="hint-window" class="browser-window small hidden">
+  <div class="window-header">
+    <span>提示</span>
+    <button onclick="closeHintWindow()">✕</button>
+  </div>
+  <div class="webpage-content">
+    <p>查詢輸入時可使用真實鍵盤<br>可能用到的按鍵<br>ctrl+F 查詢特定字詞<br>ctrl+A 全選<br>ctrl+H 歷史紀錄<br>ctrl+C<br>F5 重整<br>F12 Devtools</p>
+  </div>
+</div>
+
+<!-- 攻略視窗 -->
+<div id="guide-window" class="browser-window small hidden">
+  <div class="window-header">
+    <span>完整攻略</span>
+    <button onclick="closeGuideWindow()">✕</button>
+  </div>
+  <div class="webpage-content">
+    <p>
+      F12 開啟 DevTools，切到 element 查看註解<br><br>
+      刪除註解後會出現提示文字<br><br>
+      按 Ctrl + H 開啟歷史紀錄，找出正確網址(6)<br><br>
+      在正確分頁中按 Ctrl + F 並搜尋「i」<br><br>
+      將記錄(6)網址改為I的查詢結果並查詢網址<br><br>
+      ctrl+A全選看底下網址<br>
+      輸入網址<br>
+    </p>
+  </div>
+</div>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,545 @@
+body {
+  margin: 0;
+  background-color: #350e0a;
+  font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0px;
+}
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+#start-screen {
+  height: 1200px; /* 滿版畫面高度 */
+  width: 1500px;  /* 滿版寬度 */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* 垂直置中 */
+  align-items: center;     /* 水平置中 */
+  text-align: center;
+  color: white;
+  background-color: #2d2d2d;
+  background-image: url("cover.jpg");
+  background-size: cover;
+  background-position: center ;
+  background-repeat: no-repeat;
+}
+
+#start-screen p {
+  position: absolute;
+  top: 0;
+  margin-bottom: 20px;
+}
+
+#start-btn {
+  position: absolute;
+  bottom: 150px;
+  width: 200px;
+  padding: 12px 24px;
+  font-size: 18px;
+  background-color: red;
+  color: rgb(72, 6, 6);
+  border: 2px solid white;
+  border-radius: 8px;
+  cursor: pointer;
+}
+#start-screen button:hover{
+  transform: scale(1.03);
+}
+/* 模擬視窗樣式 */
+.window {
+  width: 600px;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+.ftwelve{
+  color: tomato;
+}
+.title-bar {
+  height: 40px;
+  background-color: #0078d7;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+}
+
+.buttons button {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: none;
+  margin-left: 5px;
+  cursor: pointer;
+}
+
+.minimize { background-color: #fbbc05; }
+.maximize { background-color: #34a853; }
+.close    { background-color: #ea4335; }
+
+.content {
+  padding: 20px;
+}
+
+.input-display {
+  width: 100%;
+  padding: 10px;
+  font-size: 18px;
+  box-sizing: border-box;
+}
+
+/* 模擬鍵盤樣式 */
+.keyboard {
+  position: absolute;
+  bottom: 30px;
+  left: 25%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 900px;
+  width: 100%;
+  align-items: center;
+}
+
+.row {
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+  flex-wrap: nowrap;
+}
+
+.key {
+  padding: 6px;
+  min-width: 20px;
+  min-height: 10px;
+  background-color: #a7a7a7;
+  border-radius: 4px;
+  border: 1px solid #aaa;
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+}
+.key:hover {
+  background-color: #bbb;
+}
+
+.key.wide {
+  flex: 2;
+  min-width: 100px;
+}
+
+.key.special {
+  background-color: #a7a7a7;
+  font-weight: bold;
+  min-width: 30px;
+}
+.key.special:hover {
+  background-color: #bbb;
+}
+
+.number-column {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+  gap: 5px;
+}
+.spacebar {
+  min-width: 300px;
+}
+.browser-window {
+  position: absolute;
+  top: 10px;
+  left: 500px;
+  width: 600px;
+  border: 1px solid #888;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  background-color: white;
+  margin-bottom: 20px;
+  font-family: sans-serif;
+}
+
+/* 分頁列 */
+.tab-bar {
+  display: flex;
+  background-color: #eee;
+  padding: 5px 10px;
+  align-items: center;
+}
+
+.tab {
+  background-color: #b4b4b4;
+  border-radius: 5px 5px 0 0;
+  padding: 4px 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+}
+
+.favicon {
+  width: 16px;
+  height: 16px;
+}
+
+.close-tab {
+  margin-left: 8px;
+  cursor: pointer;
+}
+
+/* 網址列 */
+.address-bar {
+  display: flex;
+  align-items: center;
+  background-color: #f3f3f3;
+  padding: 4px 10px;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+
+.address-bar .lock-icon {
+  margin-right: 6px;
+}
+
+.address-bar input {
+  flex: 1;
+  padding: 4px 6px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.address-bar .refresh {
+  margin-left: 6px;
+  padding: 4px 8px;
+  background-color: #eee;
+  border: 1px solid #bbb;
+  cursor: pointer;
+}
+
+/* 網頁內容 */
+.webpage-content {
+  overflow-y: auto; 
+  padding: 20px;
+  height: 220px;
+  font-size: 18px;
+  background-color: #2d2d2d;
+  color: #ffffff;
+  font-family: 'Courier New', Courier, monospace;
+}
+#start-screen {
+  text-align: center;
+  margin-top: 100px;
+}
+
+#start-screen h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+#start-screen button {
+  padding: 10px 20px;
+  font-size: 18px;
+  background-color: #0078d7;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+#start-screen button:hover {
+  background-color: #005ea3;
+}
+.devtools {
+  position: absolute;
+  top: 50px;
+  right: 0px;
+  width: 300px;
+  height: 350px;
+  background-color: #1e1e1e;
+  color: #d4d4d4;
+  font-family: monospace;
+  border: 1px solid #555;
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+}
+
+.devtools.hidden {
+  display: none;
+}
+
+.devtools-header {
+  display: flex;
+  justify-content: space-between;
+  background-color: #333;
+  padding: 5px 10px;
+  color: #fff;
+  align-items: center;
+}
+
+.devtools-tabs {
+  display: flex;
+  background-color: #2d2d2d;
+}
+
+.devtools-tabs button {
+  flex: 1;
+  background-color: #2d2d2d;
+  color: #ccc;
+  border: none;
+  padding: 6px;
+  cursor: pointer;
+}
+
+.devtools-tabs button:hover {
+  background-color: #444;
+}
+
+.devtools-content {
+  padding: 10px;
+  flex: 1;
+  overflow: auto;
+}
+
+.visible {
+  display: block;
+}
+.hidden {
+  display: none;
+}
+
+/* 顯示提示文字 */
+.hint-text {
+  color: red;
+  background-color: black;
+  padding: 5px;
+  margin-top: 10px;
+  font-weight: bold;
+}
+/*DevTools的註解刪除*/
+.comment-delete {
+  background-color: transparent;
+  border: none;
+  color: red;
+  font-weight: bold;
+  cursor: pointer;
+  margin-left: 5px;
+}
+.ctrl-active {
+  background-color: #88f !important;
+  color: white;
+}
+/*做歷史分頁的時候出現的*/
+.tab.active {
+  background-color: #ccc;
+}
+.history-list {
+  list-style: none;
+  padding: 0;
+}
+.history-list li {
+  margin: 5px 0;
+  cursor: pointer;
+}
+/*大頭訊息*/
+.browser-window.small {
+  width: 500px;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  border: 2px solid #333;
+  border-radius: 8px;
+  box-shadow: 4px 4px 12px rgba(0,0,0,0.2);
+  background: #fff;
+  z-index: 2000;
+}
+.window-header {
+  background: #444;
+  color: white;
+  padding: 6px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
+.window-header button {
+  background: none;
+  color: white;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+}
+.hidden {
+  display: none;
+}
+.search-bar {
+  display: flex;
+  width: 320px;
+  gap: 8px;
+  align-items: center;
+  padding: 10px;
+  background: #f0f0f0;
+  border-top: 1px solid #ccc;
+  position: absolute;
+  bottom: 550px;
+  left: 900px;
+  right: 200px;
+  z-index: 999;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  border-radius: 8px;
+}
+
+.search-bar input {
+  flex: 1;
+  padding: 6px 10px;
+  font-size: 16px;
+}
+
+.search-bar button {
+  padding: 6px 12px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.close-search {
+  background: none;
+  border: none;
+  font-size: 18px;
+  color: #666;
+  cursor: pointer;
+}
+.hidden {
+  display: none;
+}
+.final-image {
+  max-width: 100%;
+  max-height: 300px;
+  object-fit: contain;
+  display: block;
+  margin: 10px auto;
+}
+#video-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: black;
+  z-index: 9999;
+}
+
+.ending-screen {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #000;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  text-align: center;
+}
+.ending-screen button {
+  margin-top: 20px;
+  padding: 12px 24px;
+  font-size: 18px;
+  border: none;
+  background-color: crimson;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+}
+/* 新增動畫用 */
+.fade-out {
+  animation: fadeOut 1.5s forwards;
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.helper-buttons {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 999;
+}
+
+.helper-buttons button {
+  padding: 8px 14px;
+  font-size: 14px;
+  border: none;
+  border-radius: 6px;
+  background-color: #444;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.helper-buttons button:hover {
+  background-color: #666;
+}
+#guide-window{
+  width: 400px;
+  position: absolute;
+  top: 350px;
+  left: 10px;
+}
+#hint-window{
+  width: 400px;
+  position: absolute;
+  top: 350px;
+  left: 10px;
+}
+
+/*
+                                                 jfljb*od*bjjbbk,mndxknflkbh8y *zf;jhfz*u86r7trhnvk*b9yuf8*wyru*wjhfbjsj,bj;on/jnjonu*nhukjhnjbn
+                                          *kbhjcfgvbnjshsnvm,nvnd,mbnbnbm,nbmnbb                 kl.,bnl;f,blkm,fbklkm.blm .jvjmlkb153513
+                                          bkn,mn,mUd78y3qgrubwf*no*ahs*vnjvnv   vghjvbk,nbmbmvhgmcdg   fFyufygvfTVGXUbC*honvdbfb68f4n66O&GYUBCNU*V
+                                              LJ8dw*urh*fhujsvd*volnvkjv   *efjhfakhkaavkjlcvvjhfghn   *GYUUCGUOYSGC*YUch9s7bhcu*cj8&YGUssfwhnjc  
+                                           *UD**fkldjbbnkfknjlnkk.njlkn   kjfl*F*O*@#$K)*egheng.kjdljkmj   j8GYUD*chb**GYUC&*YGUSH&Y*GU*YGUBX&GCUCB
+                                          klZJ*iiiiiiiiiljv*lvjvjlvjl   nJKFJLNDKLBNk,mg,n.m, m.,m/;lknh   *j7ygxgq3yubtfg3*uhy78auyfgf837guffa*88
+                                        kvzj89Yi7r8&^pupirqhufjjvnvjk   zkjbnmksfdgfhh*(&YTFYgv*(&O*UJbmdkjn   J&DGUYp78asygurb3*feu97fgyqlbf*lsuvyv
+                                       N<V,mzftixnb,.n pi,nb.,cmxnvv   kgfhdguh*jokkrtdcnmkju*lyufhcfcv nvnvb   frhjkll;lgfdghjuk*o45frty4u*6o*j84df
+                                      kjzcbrxvpiiiiiiiiibkdjndv,mvv   cjfhgvjkl;zdfxgfchvjbklju*rrfgv *ytrdxfc   oyt67r5ytcvu*rexdc5dtycv7*6ecvfddcu
+                                      kjopY*&yriijrcpjvU8rjhkjzjkvv   hxdcfjvgn*uytgvnuytsresxd1653*765(*&^TyfU   t67r5dcrsy5uyfo8fp9;*yft4suzudkku6
+                                      jeU*D7y8hiirc*jhfjcvjvkxvjv   *(&^FTU*F     hs486grb4fsg8g      f65n4f5   fuyrfuyb8uh8t78f*67r554eurykufgpbb
+                                     kjHgdUY&YEiiy9HUQiiiiihkvhjv   R%ESRGjhjs      iiiJ^&*jrsbk      454h@$#^*   ouh8iiiiig8gbfH(*FHBbPUH(WUHPWUGFH
+                                      jw&TDUDHKiUHhUFbihhkhiiiidm   UOsluholjy     idb4ifnf3nuy     jvlk.,,GbD   osUii*HPOWiOFHFbO:HYP*FYHUHVKJBHB
+                                     jlmU*&Du2hi7y&T^&ir2jfhkjjvn   ufmgkhTGFUGHOniBWHFKLiuhvvudh$^&^*4554ygccr   nii&WTGBFUiCohc*YF7fuhy(bULHFfgus
+                                      wUHX*YHDm*Embckiiiiiii&%67x   w7yFYGEUFheuiijsdfu4pip6%89qrdhhau,gckv.jl   qJiiFwyhomyr89h*Y(*RY8hfhfowhhvhv
+                                       u8NcDnyruUuuNUDiha8yfhfjsvnb   hjuhvj&^&%iiiiiiiiiiii 0Dmjfo8&@^EyvhnYD*   hiihhouhfluhumy98(*Y98wyhmuhwufhj
+                                       j*&HFu378foBFJHiwUhfkhvvhjvvc   bjhbknl/i;78rd354 6#$i Ejnv15v4^$7ejfdhj   kiiO*ey8pihhOU98hrf8fhzY(*#YHUjjvn
+                                        h7YUbghjfwlwfotiiiiiiijvnhjsx   hjlghaiFaHEBVDJ  :BgUi  yuah3jkjhsjcvjh   bLUiiiiiHFhoswfyW&s&YHiiiiiiiGDsLDDb
+                                        OJU*(huanfmvobpbnlekjwohenbbb   bj&F%Tagrbo3j54  3897i  fecvj;u837y3fj   wFJWb*HFUHesfhvYFqWbbiivo9hcbuhcbuh
+                                         N*7yuqhbfnvchvnkb;ovjbnmlabho   jvhzuY&^%@E(y9ydhv09v93rhuef66b4645q   KJDOmWHJKNVKJN<NKJHVli8y8nh3wnjkvnkj
+                                          J*&gybqtvgbuqevohflwhfvluvnvn   u8b%Wtfdukyh0 84jtpgr54687bffuycnuv   KJF*YWHJNljvwu98rhkjwilcklkjcobuwodw
+                                          mlnoklJLJnougjwlvmjow;fjnvdvnv   3jhcqa @& 8y fc 3 76 k9 (f ne9h2v   kefluOUF(UJWmfjfLKMVLJiiiiiiii09eujlksj
+                                           JD(*q3hwf987eguenguhnanb8dv9hu   hflyu &# wu fl h ej jg vl vme,v   kJFO*WHJFKLJSLFJUOWnJFWiKJFKMS>MV>S<MlJ
+                                           p87gYUHGbfughb89UbGhcogjlgjlgj   jou(* ^& GE 8o o c; 3u 9u jobjb   JLFUJWrOJFLWJFOWJFLKWJFiWLJMlkfjmLFLKMv
+                                            jslm.dbnoY(Uw(7r3yg8bfhgf98hngk   juUb ^r hu hv n wG *b GH egh   jflewfjbejslj;sojoejo;sbi(EufjiiiiilajkHhv
+                                               nlck,mb.fmbfkmn;gdlkgonjdmlmg   U Fb FH EJ HW NM WM F jjk   azjY*WOHFKHceychawbu(*YHRUiiiiiii:OHCJnkjs
+                                                 mvz.vlkvmn .,smzlkmbn bl.kmlbl   dfghjlkfchjbklfhvjbkn   klUF*JfkjnWNvkjdhvodwjgp'bjhugkjnjdbnklhbjb
+                                                        lkbhjghcftuygruhojpk';lkj                        ,nh7t86ftvjhbkwjgmybhnjlvjbhubjkfvehbjk nvkjv
+                                                              fwguo;bhlkg8o(Ybfhge8o79boweb8^&*O&^R&bfguvhajbvwoghunbjfkneldkfwshbbfob;whgbkjb,kjbd
+*/

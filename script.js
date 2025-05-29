@@ -285,7 +285,7 @@ function switchTab(tabName) {
   }
   if (tabName === "peace") {
   content.innerHTML = `
-    <h2> Welcome to peace.</h2>
+
     <p>where you can be a higher level collection of consciousness if you can see what's undercovered and<span class="ftwelve"> select all</span> you want</p>
     <br><br><h5 style="color: #2d2d2d;">moomee.com</h5>
   `;
@@ -293,7 +293,6 @@ function switchTab(tabName) {
   if (tabName === "rlyeh") {
   content.innerHTML = `
     <div class="rlyeh-page">
-      <h2 style="color: crimson;">now you get the key</h2>
       <p style="font-style: italic; color: darkgreen;">
         <p>Ph'nglui mglw'nafh Cthulhu R'lyeh wgah'nagl fhtagn</p><br>
         <p>In his house at R'lyeh, dead Cthulhu waits dreaming</p>
@@ -472,12 +471,11 @@ function handleFinalEntrance() {
     const endingScreen = document.createElement('div');
     endingScreen.className = "ending-screen";
     endingScreen.innerHTML = `
-      <h1>感謝遊玩，${playerName}！</h1>
-      <p>通關時間為 ${timeSpent} 秒。</p>
-      <h3>製作團隊</h3><p><br>導演 姆咪<br>編劇 甲犇<br>美術 烏薩奇<br>程式 姆咪 chatgpt<br></p>
-      <h3>特別感謝</h3>
-      <p>H.P. Lovecraft</p>
-      <button onclick="location.reload()">回到主畫面</button>
+      <h1>Thank you,${playerName}！</h1>
+      <p>completion time: ${timeSpent} seconds。</p>
+      <h3>Development Team</h3><p><br>Director 姆咪<br>Screenwriter 甲犇<br>Art 烏薩奇<br>Code moomee chatgpt<br></p>
+      <p>special thanks to H.P. Lovecraft</p>
+      <button onclick="location.reload()">back</button>
     `;
     document.body.appendChild(endingScreen);
   }, 1500); // 等同 CSS 動畫時間

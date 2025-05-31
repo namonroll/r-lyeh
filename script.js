@@ -442,14 +442,22 @@ function setFocusedInput(el) {
 }
 //end
 function handleFinalEntrance() {
-  const playerName = prompt("enter your name :");
+  const playerName = prompt("enter your name:");
   if (!playerName) return;
 
   const endTime = Date.now();
-  const timeSpent = Math.floor((endTime - startTime) / 1000); // 以秒為單位
+  const timeSpent = Math.floor((endTime - startTime) / 1000);
   console.log(`玩家 ${playerName} 通關時間：${timeSpent} 秒`);
 
-  // 👉 之後可在這裡加上 Firebase 上傳功能
+  // ✅ 將資料寫入 Firebase
+  firebase.database().ref('leaderboard').push({
+    name: playerName,
+    time: timeSpent
+  }).then(() => {
+    console.log("✅ 資料已寫入 Firebase");
+  }).catch(error => {
+    console.error("❌ 寫入失敗：", error);
+  });
 
   // 顯示影片遮罩
   const videoOverlay = document.createElement('div');
@@ -459,28 +467,44 @@ function handleFinalEntrance() {
   `;
   document.body.appendChild(videoOverlay);
 
-  // 當影片播放完畢，顯示結尾畫面
   const video = document.getElementById("end-video");
+
   video.onended = () => {
-  video.classList.add('fade-out');
+    video.classList.add('fade-out');
 
-  // 延遲等動畫完成後再移除影片並顯示結尾畫面
-  setTimeout(() => {
-    videoOverlay.remove();
+    setTimeout(() => {
+      videoOverlay.remove();
 
-    const endingScreen = document.createElement('div');
-    endingScreen.className = "ending-screen";
-    endingScreen.innerHTML = `
-      <h1>Thank you,${playerName}！</h1>
-      <p>completion time: ${timeSpent} seconds。</p>
-      <h3>Development Team</h3><p><br>Director 姆咪<br>Screenwriter 甲犇<br>Art 烏薩奇<br>Code moomee chatgpt<br></p>
-      <p>special thanks to H.P. Lovecraft</p>
-      <button onclick="location.reload()">back</button>
-    `;
-    document.body.appendChild(endingScreen);
-  }, 1500); // 等同 CSS 動畫時間
-};
-//提示按鈕
+      const endingScreen = document.createElement('div');
+      endingScreen.className = "ending-screen";
+      endingScreen.innerHTML = `
+        <h1>Thank you, ${playerName}！</h1>
+        <p>completion time: ${timeSpent} seconds。</p>
+        <h3>Development Team</h3>
+        <p><br>Director 姆咪<br>Screenwriter 甲犇<br>Art 烏薩奇<br>Code moomee chatgpt</p>
+        <p>special thanks to H.P. Lovecraft</p>
+        <button onclick="location.reload()">back</button>
+      `;
+
+      // ✅ 讀取前 5 名排行榜
+      firebase.database().ref('leaderboard').orderByChild('time').limitToFirst(5).once('value', snapshot => {
+  const data = [];
+  snapshot.forEach(child => {
+    data.push(child.val());
+  });
+
+  let leaderboardHTML = "<h2> Leaderboard</h2><ol>";
+  data.forEach(entry => {
+    leaderboardHTML += `<li>${entry.name} - ${entry.time}s</li>`;
+  });
+  leaderboardHTML += "</ol>";
+
+  endingScreen.innerHTML += leaderboardHTML;
+});
+
+      document.body.appendChild(endingScreen);
+    }, 1500);
+  };
 }
 document.getElementById('hint-btn').addEventListener('click', toggleHintPanel);
 
@@ -505,3 +529,10 @@ function toggleGuideWindow() {
 function closeGuideWindow() {
   document.getElementById("guide-window").classList.add("hidden");
 } // ← ✅ 這個右大括號是你漏掉的
+//firebase 
+const playerRef = firebase.database().ref('leaderboard').push();
+playerRef.set({
+  name: playerName,
+  time: timeSpent,
+  timestamp: Date.now()
+});

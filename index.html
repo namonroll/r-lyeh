@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>運算思維期末</title>
+  <title>myR'lyeh</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -242,7 +242,7 @@
   </div>
   <div class="webpage-content">
     <p>
-      F12 開啟 DevTools，切到 element 查看註解<br><br>
+      F12 開啟 DevTools，切到 element查看註解及console提示<br><br>
       刪除註解後會出現提示文字<br><br>
       按 Ctrl + H 開啟歷史紀錄，找出正確網址(6)<br><br>
       在正確分頁中按 Ctrl + F 並搜尋「i」<br><br>
@@ -253,5 +253,22 @@
   </div>
 </div>
   <script src="script.js"></script>
+  <!-- Firebase CDN -->
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
+<script>
+  const firebaseConfig = {
+  apiKey: "AIzaSyDWQM3A6tL1F7JP2W9SWZWTtgKj8RSBOuE",
+  authDomain: "rlyeh-20572.firebaseapp.com",
+  databaseURL: "https://rlyeh-20572-default-rtdb.firebaseio.com",
+  projectId: "rlyeh-20572",
+  storageBucket: "rlyeh-20572.firebasestorage.app",
+  messagingSenderId: "404411718506",
+  appId: "1:404411718506:web:5c51257f321a14572b6313",
+  measurementId: "G-3TWB8SGF0W"
+};
+  firebase.initializeApp(firebaseConfig);
+  const database = firebase.database();
+</script>
 </body>
 </html>

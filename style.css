@@ -502,14 +502,14 @@ html, body {
 #guide-window{
   width: 400px;
   position: absolute;
-  top: 350px;
-  left: 10px;
+  top: 310px;
+  left: 20px;
 }
 #hint-window{
   width: 400px;
   position: absolute;
-  top: 350px;
-  left: 10px;
+  top: 310px;
+  left: 20px;
 }
 
 /*
